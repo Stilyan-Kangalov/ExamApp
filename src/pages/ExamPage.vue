@@ -5,15 +5,15 @@
 
       <q-item v-for="exam in exams" :key="exam.id" clickable v-ripple>
         <q-item-section avatar top>
-          <q-avatar v-if="exam.onDate < getMyDate" icon="create" color="orange" text-color="white" />
+          <q-avatar v-if="exam.endDate < getMyDate" icon="create" color="orange" text-color="white" />
           <q-avatar v-else icon="check" color="grey" text-color="white" />
         </q-item-section>
         <q-item-section>
           <q-item-label lines="1">{{ exam.name }}</q-item-label>
-          <q-item-label caption>{{ exam.onDate }}</q-item-label>
+          <q-item-label caption>{{ exam.startDate }}</q-item-label>
       </q-item-section>
       <q-item-section side>
-        <q-icon v-if="exam.onDate < getMyDate" name="info" color="amber" />
+        <q-icon v-if="exam.endDate < getMyDate" name="info" color="amber" />
         <q-icon v-else name="info" color="green" />
         </q-item-section>
         </q-item>
@@ -31,22 +31,32 @@ export default {
         {
           id: 1,
           name: 'Фитнес тренировка - Фитнес състезания',
-          onDate: '08/02/2020 08:00'
+          startDate: '08/02/2020 08:00',
+          endDate: '08/02/2020 08:00'
         },
         {
           id: 2,
           name: 'Педагогика',
-          onDate: '09/02/2020 08:00'
+          startDate: '09/02/2020 08:00',
+          endDate: '09/02/2020 09:00'
         },
         {
           id: 3,
           name: 'Спортна аеробика',
-          onDate: '10/02/2020 08:00'
+          startDate: '10/02/2020 08:00',
+          endDate: '10/02/2020 09:00'
         },
         {
           id: 4,
           name: 'Спортна психология',
-          onDate: '01/02/2020 08:00'
+          startDate: '01/02/2020 08:00',
+          endDate: '01/02/2020 09:00'
+        },
+        {
+          id: 4,
+          name: 'Спортен масаж',
+          startDate: '02/02/2020 13:00',
+          endDate: '02/02/2020 17:00'
         }
       ],
       visible: true
