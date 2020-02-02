@@ -61,11 +61,12 @@ export default {
   }
 }
 </script>
+
+<style scoped>
 h1 {
     font-size: 1.5rem;
     font-weight: 300;
     line-height: 0rem;
     letter-spacing: -0.01562em;
 }
-<style scoped>
 </style>
