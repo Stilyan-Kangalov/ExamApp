@@ -55,7 +55,7 @@ export default {
           endDate: '01/02/2020 09:00'
         },
         {
-          id: 4,
+          id: 5,
           name: 'Спортен масаж',
           startDate: '02/02/2020 13:00',
           endDate: '02/02/2020 17:05'
