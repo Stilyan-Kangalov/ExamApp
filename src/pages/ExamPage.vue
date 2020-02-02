@@ -5,7 +5,8 @@
 
       <q-item v-for="exam in exams" :key="exam.id" clickable v-ripple>
         <q-item-section avatar top>
-          <q-avatar v-if="exam.endDate < getMyDate" icon="create" color="orange" text-color="white" />
+          <q-avatar v-if="getMyDate < exam.startDate" icon="create" color="orange" text-color="white" />
+          <q-avatar v-else-if="getMyDate >= exam.startDate && getMyDate <= exam.endDate" icon="play_arrow" color="red" text-color="white" />
           <q-avatar v-else icon="check" color="grey" text-color="white" />
         </q-item-section>
         <q-item-section>
@@ -13,7 +14,8 @@
           <q-item-label caption>{{ exam.startDate }}</q-item-label>
       </q-item-section>
       <q-item-section side>
-        <q-icon v-if="exam.endDate < getMyDate" name="info" color="amber" />
+        <q-icon v-if="getMyDate < exam.startDate" name="info" color="amber" />
+        <q-icon v-else-if="getMyDate >= exam.startDate && getMyDate <= exam.endDate" name="info" color="red" />
         <q-icon v-else name="info" color="green" />
         </q-item-section>
         </q-item>
@@ -56,7 +58,7 @@ export default {
           id: 4,
           name: 'Спортен масаж',
           startDate: '02/02/2020 13:00',
-          endDate: '02/02/2020 17:00'
+          endDate: '02/02/2020 17:05'
         }
       ],
       visible: true
