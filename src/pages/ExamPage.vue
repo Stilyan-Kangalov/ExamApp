@@ -3,7 +3,7 @@
     <q-list bordered padding class="rounded-borders" style="max-width: 80%">
       <q-item-label header><h1>Изпити</h1></q-item-label>
 
-      <q-item v-for="exam in exams" :key="exam.id" clickable v-ripple>
+      <q-item v-for="(exam, key) in exams" :key="key" clickable v-ripple>
         <q-item-section avatar top>
           <q-avatar v-if="getMyDate < exam.startDate" icon="create" color="orange" text-color="white" />
           <q-avatar v-else-if="getMyDate >= exam.startDate && getMyDate <= exam.endDate" icon="play_arrow" color="red" text-color="white" />
@@ -25,46 +25,16 @@
 
 <script>
 import { date } from 'quasar'
+import { mapGetters } from 'vuex'
 
 export default {
   data () {
     return {
-      exams: [
-        {
-          id: 1,
-          name: 'Фитнес тренировка - Фитнес състезания',
-          startDate: '08/02/2020 08:00',
-          endDate: '08/02/2020 08:00'
-        },
-        {
-          id: 2,
-          name: 'Педагогика',
-          startDate: '09/02/2020 08:00',
-          endDate: '09/02/2020 09:00'
-        },
-        {
-          id: 3,
-          name: 'Спортна аеробика',
-          startDate: '10/02/2020 08:00',
-          endDate: '10/02/2020 09:00'
-        },
-        {
-          id: 4,
-          name: 'Спортна психология',
-          startDate: '01/02/2020 08:00',
-          endDate: '01/02/2020 09:00'
-        },
-        {
-          id: 5,
-          name: 'Спортен масаж',
-          startDate: '02/02/2020 13:00',
-          endDate: '02/02/2020 17:05'
-        }
-      ],
       visible: true
     }
   },
   computed: {
+    ...mapGetters('exams', ['exams']),
     getMyDate () {
       let timeStamp = Date.now()
       let myCurrentDate = date.formatDate(timeStamp, 'DD/MM/YYYY HH:mm')
