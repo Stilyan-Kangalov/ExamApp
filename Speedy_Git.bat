@@ -11,6 +11,7 @@ set currentTime=%mydate%%mytime%
 REM set timeOut time
 set timeOutNum=15
 REM show Git status
+call git status
 
 echo.
 echo ### Choose to Push or Get ###
@@ -44,7 +45,7 @@ IF "%option%"=="1" (
 	call cd _site
 	set /p "msgline=### Type message for your new commit:"
 	call git add .
-	call git commit -m "%msgline%"
+	call git commit -m "!msgline!"
 	call git push origin master
 	echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 	echo.
@@ -105,7 +106,7 @@ IF "%option%"=="1" (
 ) ELSE IF "%option%"=="8" (
     call cd _site
 	set /p "url=### Paste the URL from the original(forked) repo and press Enter:"
-    call git remote add upstream %url%
+    call git remote add upstream !url!
 	timeout /t 10
 	call git remote -v
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
