@@ -1,5 +1,7 @@
 /* eslint-disable */
 
+import Vue from 'vue'
+
 const state = {
   exams: {
     'ID1': {
@@ -30,9 +32,17 @@ const state = {
   }
 }
 
-const mutations = {}
+const mutations = {
+  deleteExam(state, id) {
+    Vue.delete(state.exams, id)
+  }
+}
 
-const actions = {}
+const actions = {
+  deleteExam({ commit }, id) {
+    commit('deleteExam', id)
+  }
+}
 
 const getters = {
   exams: (state) => {

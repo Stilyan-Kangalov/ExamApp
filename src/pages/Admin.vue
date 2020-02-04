@@ -16,7 +16,7 @@
               <q-btn flat round color="primary" icon="lock_open" />
             </q-item-section>
             <q-item-section side>
-              <q-btn @click.stop="askToRemove(id)" flat round color="red" icon="highlight_off" />
+              <q-btn @click.stop="askToRemove(key)" flat round color="red" icon="highlight_off" />
             </q-item-section>
         </q-item>
     </q-list>
@@ -33,7 +33,6 @@ export default {
       visible: true
     }
   },
-  props: ['exam', 'id'],
   computed: {
     ...mapGetters('exams', ['exams']),
     getMyDate () {
@@ -42,8 +41,9 @@ export default {
       return myCurrentDate
     }
   },
+  props: ['exam', 'id'],
   methods: {
-    ...mapActions('exams', ['askToRemove']),
+    ...mapActions('exams', ['deleteExam']),
     askToRemove (id) {
       this.$q.dialog({
         title: 'Моля потвърдете:',
@@ -51,7 +51,7 @@ export default {
         cancel: true,
         persistent: true
       }).onOk(() => {
-        console.log('>>>> OK')
+        this.deleteExam(id)
       })
     }
   }
