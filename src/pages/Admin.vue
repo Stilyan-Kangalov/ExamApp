@@ -1,7 +1,7 @@
 <template>
   <div class="q-pa-md q-gutter-md">
     <q-list bordered padding class="rounded-borders" style="max-width: 80%">
-      <q-item-label header><h1>Контролен панел</h1></q-item-label>
+      <q-item-label header><q-btn @click="showAddExam = true" class="float-right" round color="primary" size="15px" icon="add" /><h1>Контролен панел</h1></q-item-label>
       <q-item v-for="(exam, key) in exams" :key="key" clickable v-ripple>
     <q-item-section avatar top>
         <q-avatar v-if="getMyDate < exam.startDate" icon="create" color="orange" text-color="white" />
@@ -19,18 +19,26 @@
               <q-btn @click.stop="askToRemove(key)" flat round color="red" icon="highlight_off" />
             </q-item-section>
         </q-item>
+        <q-dialog v-model="showAddExam" persistent :maximized="maximizedToggle" transition-show="slide-up" transition-hide="slide-down">
+          <add-exam />
+        </q-dialog>
     </q-list>
   </div>
 </template>
 
 <script>
+/* eslint-disable */
+
 import { date } from 'quasar'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
   data () {
     return {
-      visible: true
+      visible: true,
+      showAddExam: false,
+      dialog: false,
+      maximizedToggle: true
     }
   },
   computed: {
@@ -40,6 +48,9 @@ export default {
       let myCurrentDate = date.formatDate(timeStamp, 'DD/MM/YYYY HH:mm')
       return myCurrentDate
     }
+  },
+  components: {
+    'add-exam' : require('components/Modals/AddExam.vue').default
   },
   props: ['exam', 'id'],
   methods: {

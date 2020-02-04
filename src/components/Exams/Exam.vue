@@ -18,6 +18,8 @@
 </template>
 
 <script>
+/* eslint-disable */
+
 import { date } from 'quasar'
 
 export default {
