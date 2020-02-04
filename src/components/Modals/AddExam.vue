@@ -1,5 +1,5 @@
 <template>
-<q-card class="bg-primary text-white">
+<q-card class="my-bcg text-white">
         <q-bar>
           <q-space />
 
@@ -15,17 +15,54 @@
         </q-bar>
 
         <q-card-section>
-          <div class="text-h6">Alert</div>
+          <div class="text-h6">Добави нов изпит</div>
         </q-card-section>
 
         <q-card-section class="q-pt-none">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum repellendus sit voluptate voluptas eveniet porro. Rerum blanditiis perferendis totam, ea at omnis vel numquam exercitationem aut, natus minima, porro labore.
+          <q-input outlined v-model="submitExam.name" label="Име на предмета" color="white" />
+          <div class="row q-my-sm q-gutter-md">
+            <q-select outlined v-model="submitExam.profession" transition-show="flip-up" transition-hide="flip-down" :options="optionsProfession" style="width: 250px" label="Професия" />
+            <q-select outlined v-model="submitExam.level" transition-show="flip-up" transition-hide="flip-down" :options="optionsLevel" style="width: 100px" label="Курс" />
+            <q-select outlined v-model="submitExam.type" transition-show="flip-up" transition-hide="flip-down" :options="optionsType" style="width: 200px" label="Форма на изпита" />
+          </div>
         </q-card-section>
       </q-card>
 </template>
 
 <script>
-export default {}
+export default {
+  data () {
+    return {
+      submitExam: {
+        name: '',
+        type: '',
+        level: '',
+        profession: '',
+        number: '',
+        theme: '',
+        description: '',
+        teacher: '',
+        startDate: '',
+        endDate: ''
+      },
+      dialog: false,
+      maximizedToggle: true,
+      model: null,
+      optionsProfession: [
+        'Инструктор по фитнес', 'Треньор', 'Инструктор и Треньор'
+      ],
+      optionsLevel: [
+        'Първи', 'Втори'
+      ],
+      optionsType: [
+        'Теория', 'Практика'
+      ]
+    }
+  },
+  props: ['maximized']
+}
 </script>
 
-<style scoped></style>
+<style scoped>
+  .my-bcg {background-color: #26a69a;}
+</style>

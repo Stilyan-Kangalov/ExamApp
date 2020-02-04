@@ -47,7 +47,10 @@ module.exports = function (ctx) {
         'QItemSection',
         'QItemLabel',
         'QSlideTransition',
-        'QDialog'
+        'QDialog',
+        'QInput',
+        'QRadio',
+        'QSelect'
       ],
       directives: [
         'ClosePopup'
