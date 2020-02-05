@@ -1,6 +1,6 @@
 <template>
   <div class="q-pa-md q-gutter-md">
-    <q-list bordered padding class="rounded-borders" style="max-width: 80%">
+    <q-list bordered padding class="rounded-borders" style="max-width: 80%; background-color: white;">
       <q-item-label header><h1>Изпити</h1></q-item-label>
 
       <exam v-for="(exam, key) in exams" :key="key" :id="key" :exam="exam" :date="getMyDate" ></exam>

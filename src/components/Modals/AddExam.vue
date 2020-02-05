@@ -15,15 +15,15 @@
         </q-bar>
 
         <q-card-section>
-          <div class="text-h6">Добави нов изпит</div>
+          <div class="text-h6" style="color: #4effee">Добави нов изпит</div>
         </q-card-section>
 
         <q-card-section class="q-pt-none">
-          <q-input outlined v-model="submitExam.name" label="Име на предмета" color="white" />
+          <q-input outlined v-model="submitExam.name" label="Име на предмета" dark color="white" />
           <div class="row q-my-sm q-gutter-md">
-            <q-select outlined v-model="submitExam.profession" transition-show="flip-up" transition-hide="flip-down" :options="optionsProfession" style="width: 250px" label="Професия" />
-            <q-select outlined v-model="submitExam.level" transition-show="flip-up" transition-hide="flip-down" :options="optionsLevel" style="width: 100px" label="Курс" />
-            <q-select outlined v-model="submitExam.type" transition-show="flip-up" transition-hide="flip-down" :options="optionsType" style="width: 200px" label="Форма на изпита" />
+            <q-select outlined v-model="submitExam.profession" transition-show="flip-up" transition-hide="flip-down" :options="optionsProfession" style="width: 250px" dark label="Професия" />
+            <q-select outlined v-model="submitExam.level" transition-show="flip-up" transition-hide="flip-down" :options="optionsLevel" style="width: 100px" dark label="Курс" />
+            <q-select outlined v-model="submitExam.type" transition-show="flip-up" transition-hide="flip-down" :options="optionsType" style="width: 250px" dark label="Форма на изпита" />
           </div>
         </q-card-section>
       </q-card>
