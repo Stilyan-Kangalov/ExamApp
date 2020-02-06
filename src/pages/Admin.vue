@@ -1,7 +1,7 @@
 <template>
   <div class="q-pa-md q-gutter-md">
-    <q-list bordered padding class="rounded-borders" style="max-width: 80%">
-      <q-item-label header><q-btn @click="showAddExam = true" class="float-right" round color="primary" size="15px" icon="add" /><h1>Контролен панел</h1></q-item-label>
+    <q-list bordered padding class="rounded-borders" style="max-width: 80%;background-color: white;">
+      <q-item-label header><q-btn @click="showAddExam = true" class="float-right" round color="teal-6" size="15px" icon="add" /><h1>Контролен панел</h1></q-item-label>
       <q-item v-for="(exam, key) in exams" :key="key" clickable v-ripple>
     <q-item-section avatar top>
         <q-avatar v-if="getMyDate < exam.startDate" icon="create" color="orange" text-color="white" />
@@ -13,10 +13,10 @@
             <q-item-label caption>{{ exam.startDate }}</q-item-label>
             </q-item-section>
             <q-item-section side>
-              <q-btn flat round color="primary" icon="lock_open" />
+              <q-btn flat round color="orange" icon="lock_open" />
             </q-item-section>
             <q-item-section side>
-              <q-btn @click.stop="askToRemove(key)" flat round color="red" icon="highlight_off" />
+              <q-btn @click.stop="askToRemove(key)" flat round color="red-10" icon="highlight_off" />
             </q-item-section>
         </q-item>
         <q-dialog v-model="showAddExam" persistent :maximized="maximizedToggle" transition-show="slide-up" transition-hide="slide-down">
@@ -27,8 +27,6 @@
 </template>
 
 <script>
-/* eslint-disable */
-
 import { date } from 'quasar'
 import { mapGetters, mapActions } from 'vuex'
 
@@ -50,7 +48,7 @@ export default {
     }
   },
   components: {
-    'add-exam' : require('components/Modals/AddExam.vue').default
+    'add-exam': require('components/Modals/AddExam.vue').default
   },
   props: ['exam', 'id'],
   methods: {
@@ -59,7 +57,12 @@ export default {
       this.$q.dialog({
         title: 'Моля потвърдете:',
         message: 'Желаете ли да изтриете изпита?',
-        cancel: true,
+        ok: {
+          color: 'red'
+        },
+        cancel: {
+          color: 'blue'
+        },
         persistent: true
       }).onOk(() => {
         this.deleteExam(id)
