@@ -6,10 +6,15 @@
         <q-avatar v-else icon="check" color="grey" text-color="white" />
         </q-item-section>
         <q-item-section>
-            <q-item-label lines="1">{{ exam.name }}</q-item-label>
-            <q-item-label caption>{{ exam.startDate }}</q-item-label>
-            </q-item-section>
-            <q-item-section side>
+          <q-item-label lines="1">{{ exam.name }}</q-item-label>
+          <q-item-label caption>{{ exam.startDate }}</q-item-label>
+        </q-item-section>
+        <q-item-section side>
+        <q-icon v-if="getMyDate < exam.startDate" name="info" color="amber" />
+        <q-icon v-else-if="getMyDate >= exam.startDate && getMyDate <= exam.endDate" name="info" color="red" />
+        <q-icon v-else name="info" color="green" />
+        </q-item-section>
+        <q-item-section side>
         <q-icon v-if="getMyDate < exam.startDate" name="info" color="amber" />
         <q-icon v-else-if="getMyDate >= exam.startDate && getMyDate <= exam.endDate" name="info" color="red" />
         <q-icon v-else name="info" color="green" />
