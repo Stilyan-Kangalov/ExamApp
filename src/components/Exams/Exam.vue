@@ -10,9 +10,9 @@
           <q-item-label caption>{{ exam.startDate }}</q-item-label>
         </q-item-section>
         <q-item-section side>
-        <q-icon v-if="getMyDate < exam.startDate" name="info" color="amber" />
-        <q-icon v-else-if="getMyDate >= exam.startDate && getMyDate <= exam.endDate" name="info" color="red" />
-        <q-icon v-else name="info" color="green" />
+        <q-icon v-if="getMyDate < exam.startDate" name="date_range" color="orange" />
+        <q-icon v-else-if="getMyDate >= exam.startDate && getMyDate <= exam.endDate" name="event" color="red" />
+        <q-icon v-else name="calendar_today" color="grey" />
         </q-item-section>
         <q-item-section side>
         <q-icon v-if="getMyDate < exam.startDate" name="info" color="amber" />
