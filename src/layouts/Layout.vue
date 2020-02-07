@@ -12,7 +12,7 @@
         />
 
         <q-toolbar-title class="absolute-center">
-          ЧПКС "БИО ФИТ"
+          ЧПКС "БИО ФИТ" - Тестова версия
         </q-toolbar-title>
       </q-toolbar>
     </q-header>
