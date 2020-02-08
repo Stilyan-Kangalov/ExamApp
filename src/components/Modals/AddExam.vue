@@ -19,11 +19,15 @@
         </q-card-section>
 
         <q-card-section class="q-pt-none">
-          <q-input outlined v-model="submitExam.name" label="Име на предмета" dark color="white" />
+          <q-input outlined v-model="submitExam.name" label="Име на предмета" style="width: 60%" dark color="white" />
           <div class="row q-my-sm q-gutter-md">
             <q-select outlined v-model="submitExam.profession" transition-show="flip-up" transition-hide="flip-down" :options="optionsProfession" style="width: 250px" dark label="Професия" />
             <q-select outlined v-model="submitExam.level" transition-show="flip-up" transition-hide="flip-down" :options="optionsLevel" style="width: 100px" dark label="Курс" />
             <q-select outlined v-model="submitExam.type" transition-show="flip-up" transition-hide="flip-down" :options="optionsType" style="width: 250px" dark label="Форма на изпита" />
+          </div>
+          <div class="row q-my-sm q-gutter-md">
+            <q-input outlined v-model="submitExam.number" label="Номер на билета" dark color="white" />
+            <q-input outlined v-model="submitExam.theme" label="Тема на изпита" style="width: 60%" dark color="white" />
           </div>
         </q-card-section>
       </q-card>
