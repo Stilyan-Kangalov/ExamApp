@@ -92,16 +92,26 @@
   </div>
   <div class="text-h6" style="color: #4effee; margin-top: 20px;">Проверка за валидни данни</div>
   <div class="q-px-sm no-margin">
-      <p v-if="!submitExam.name == '' "><q-icon name="check" color="light-green-13"></q-icon>&nbsp;<strong>Име на предмета:</strong><strong class="text-cyan-13"> {{ submitExam.name }} </strong></p>
-      <p v-else ><q-icon name="add_alert" class="bell"></q-icon>&nbsp;<strong class="my-warn-msg">Не е въведено име на предмета.</strong></p>
-      <p v-if="!submitExam.profession == '' "><q-icon name="check" color="light-green-13"></q-icon>&nbsp;<strong>Избрана професия:</strong><strong class="text-cyan-13"> {{ submitExam.profession }} </strong></p>
-      <p v-else ><q-icon name="add_alert" class="bell"></q-icon>&nbsp;<strong class="my-warn-msg">Няма избрана професия.</strong></p>
-      <p v-if="!submitExam.level == '' "><q-icon name="check" color="light-green-13"></q-icon>&nbsp;<strong>Избран курс:</strong><strong class="text-cyan-13"> {{ submitExam.level }} </strong></p>
-      <p v-else ><q-icon name="add_alert" class="bell"></q-icon>&nbsp;<strong class="my-warn-msg">Не е избран курс.</strong></p>
-      <p v-if="!submitExam.type == '' "><q-icon name="check" color="light-green-13"></q-icon>&nbsp;<strong>Форма на изпита:</strong><strong class="text-cyan-13"> {{ submitExam.type }} </strong></p>
-      <p v-else ><q-icon name="add_alert" class="bell"></q-icon>&nbsp;<strong class="my-warn-msg">Не сте избрали форма на изпита.</strong></p>
-      <p v-if="!submitExam.number == '' "><q-icon name="check" color="light-green-13"></q-icon>&nbsp;<strong>Номер на билета:</strong><strong class="text-cyan-13"> {{ submitExam.number }} </strong></p>
-      <p v-else ><q-icon name="add_alert" class="bell"></q-icon>&nbsp;<strong class="my-warn-msg">Не е въведен номер на билета.</strong></p>
+      <p v-if="!submitExam.name == '' "><q-icon name="check" color="light-green-13"></q-icon>&nbsp;<strong>Име на предмета:</strong><strong class="text-cyan-13"> {{ submitExam.name }}.</strong></p>
+      <p v-else ><q-icon name="add_alert" class="bell"></q-icon>&nbsp;<strong class="my-warn-msg">Не е въведено име на предмета !</strong></p>
+      <p v-if="!submitExam.profession == '' "><q-icon name="check" color="light-green-13"></q-icon>&nbsp;<strong>Избрана професия:</strong><strong class="text-cyan-13"> {{ submitExam.profession }}.</strong></p>
+      <p v-else ><q-icon name="add_alert" class="bell"></q-icon>&nbsp;<strong class="my-warn-msg">Няма избрана професия !</strong></p>
+      <p v-if="!submitExam.level == '' "><q-icon name="check" color="light-green-13"></q-icon>&nbsp;<strong>Избран курс:</strong><strong class="text-cyan-13"> {{ submitExam.level }}.</strong></p>
+      <p v-else ><q-icon name="add_alert" class="bell"></q-icon>&nbsp;<strong class="my-warn-msg">Не е избран курс !</strong></p>
+      <p v-if="!submitExam.type == '' "><q-icon name="check" color="light-green-13"></q-icon>&nbsp;<strong>Форма на изпита:</strong><strong class="text-cyan-13"> {{ submitExam.type }}.</strong></p>
+      <p v-else ><q-icon name="add_alert" class="bell"></q-icon>&nbsp;<strong class="my-warn-msg">Не сте избрали форма на изпита !</strong></p>
+      <p v-if="!submitExam.number == '' "><q-icon name="check" color="light-green-13"></q-icon>&nbsp;<strong>Номер на билета:</strong><strong class="text-cyan-13"> {{ submitExam.number }}.</strong></p>
+      <p v-else ><q-icon name="add_alert" class="bell"></q-icon>&nbsp;<strong class="my-warn-msg">Не е въведен номер на билета !</strong></p>
+      <p v-if="!submitExam.teacher == '' "><q-icon name="check" color="light-green-13"></q-icon>&nbsp;<strong>Преподавател:</strong><strong class="text-cyan-13"> {{ submitExam.teacher }}.</strong></p>
+      <p v-else ><q-icon name="add_alert" class="bell"></q-icon>&nbsp;<strong class="my-warn-msg">Няма записан преподавател !</strong></p>
+      <p v-if="!submitExam.theme == '' "><q-icon name="check" color="light-green-13"></q-icon>&nbsp;<strong>Тема:</strong><strong class="text-cyan-13"> {{ submitExam.theme }}.</strong></p>
+      <p v-else ><q-icon name="add_alert" class="bell"></q-icon>&nbsp;<strong class="my-warn-msg">Не е определена изпитна тема !</strong></p>
+      <p v-if="!submitExam.description == '' "><q-icon name="check" color="light-green-13"></q-icon>&nbsp;<strong>Описание:</strong>&nbsp;<strong class="text-cyan-13">(въведено).</strong></p>
+      <p v-else ><q-icon name="add_alert" class="bell"></q-icon>&nbsp;<strong class="my-warn-msg">Липсва кратко описание !</strong></p>
+      <p v-if="!submitExam.startDate == '' "><q-icon name="check" color="light-green-13"></q-icon>&nbsp;<strong>Стартира на:</strong><strong class="text-cyan-13"> {{ submitExam.startDate }} </strong></p>
+      <p v-else ><q-icon name="add_alert" class="bell"></q-icon>&nbsp;<strong class="my-warn-msg">Не е избрана стартова дата !</strong></p>
+      <p v-if="!submitExam.endDate == '' "><q-icon name="check" color="light-green-13"></q-icon>&nbsp;<strong>Приключва на:</strong><strong class="text-cyan-13"> {{ submitExam.endDate }} </strong></p>
+      <p v-else ><q-icon name="add_alert" class="bell"></q-icon>&nbsp;<strong class="my-warn-msg">Не е избрана финална дата !</strong></p>
   </div>
         </q-card-section>
       </q-card>
