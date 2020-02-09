@@ -90,12 +90,12 @@
     </q-input>
   </div>
   </div>
-  <div class="text-h6" style="color: #4effee; margin-top: 20px;">Проверка за въведени данни</div>
+  <div class="text-h6" style="color: #4effee; margin-top: 20px;">Проверка за валидни данни</div>
   <div class="q-px-sm no-margin">
       <p v-if="!submitExam.name == '' "><q-icon name="check" color="light-green-13"></q-icon>  Име на предмета: <strong class="text-cyan-13">{{ submitExam.name }}</strong></p>
-      <p v-else ><q-icon name="add_alert" color="teal-10"></q-icon>&nbsp;<strong class="text-warning">Не е зададено име на предмета.</strong></p>
+      <p v-else ><q-icon name="add_alert" color="teal-10"></q-icon>&nbsp;<strong class="my-warn-msg">Не е въведено име на предмета.</strong></p>
       <p v-if="!submitExam.profession == '' "><q-icon name="check" color="light-green-13"></q-icon>  Избрана професия: <strong class="text-cyan-13">{{ submitExam.profession }}</strong></p>
-      <p v-else ><q-icon name="add_alert" color="teal-10"></q-icon>&nbsp;<strong class="text-warning">Не е зададена професия.</strong></p>
+      <p v-else ><q-icon name="add_alert" color="teal-10"></q-icon>&nbsp;<strong class="my-warn-msg">Не е зададена професия.</strong></p>
   </div>
         </q-card-section>
       </q-card>
