@@ -17,3 +17,11 @@
 .q-date__header-title-label, .q-date__header-subtitle, .q-time__link {
     color: #26a69a !important;    
 }
+
+div.q-date__calendar-item--in button.bg-primary {
+    background: #ffffff38 !important;
+}
+
+div.q-time__clock-position--active {
+    background: #ffffff38;
+}
