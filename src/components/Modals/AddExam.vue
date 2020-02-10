@@ -18,30 +18,30 @@
           <div class="text-h6" style="color: #4effee">Добави нов изпит</div>
         </q-card-section>
 
-        <q-form>
+        <q-form @submit.prevent="submitForm">
         <q-card-section class="q-pt-none">
-          <q-input outlined v-model="submitExam.name" label="Име на предмета" style="width: 70%" dark color="white">
+          <q-input outlined v-model="submitExam.name" label="Име на предмета" style="width: 70%" dark color="white" :rules="[val => !!val ]">
             <template v-slot:append>
               <q-icon name="edit" />
             </template>
           </q-input>
           <div class="row q-my-sm q-gutter-md">
-            <q-select outlined v-model="submitExam.profession" transition-show="flip-up" transition-hide="flip-down" :options="optionsProfession" style="width: 250px" dark label="Професия" />
-            <q-select outlined v-model="submitExam.level" transition-show="flip-up" transition-hide="flip-down" :options="optionsLevel" style="width: 130px" dark label="Курс" />
-            <q-select outlined v-model="submitExam.type" transition-show="flip-up" transition-hide="flip-down" :options="optionsType" style="width: 200px" dark label="Форма на изпита" />
-            <q-input outlined v-model="submitExam.number" label="Номер на билета" style="width: 230px" dark color="white">
+            <q-select outlined v-model="submitExam.profession" transition-show="flip-up" transition-hide="flip-down" :options="optionsProfession" :rules="[val => !!val ]" style="width: 250px" dark label="Професия" />
+            <q-select outlined v-model="submitExam.level" transition-show="flip-up" transition-hide="flip-down" :options="optionsLevel" :rules="[val => !!val ]" style="width: 130px" dark label="Курс" />
+            <q-select outlined v-model="submitExam.type" transition-show="flip-up" transition-hide="flip-down" :options="optionsType" :rules="[val => !!val ]" style="width: 200px" dark label="Форма на изпита" />
+            <q-input outlined v-model="submitExam.number" label="Номер на билета" :rules="[val => !!val ]" style="width: 230px" dark color="white">
               <template v-slot:append>
                 <q-icon name="edit" />
               </template>
             </q-input>
-            <q-input outlined v-model="submitExam.teacher" label="Преподавател" style="width: 450px" dark color="white">
+            <q-input outlined v-model="submitExam.teacher" label="Преподавател" :rules="[val => !!val ]" style="width: 450px" dark color="white">
               <template v-slot:append>
                 <q-icon name="edit" />
               </template>
             </q-input>
           </div>
           <div class="row q-my-sm q-gutter-md">
-            <q-input outlined v-model="submitExam.theme" label="Тема на изпита" style="width: 69.5%" dark color="white" :rules="[val => !!val ]">
+            <q-input outlined v-model="submitExam.theme" label="Тема на изпита" :rules="[val => !!val ]" style="width: 69.5%" dark color="white">
               <template v-slot:append>
                 <q-icon name="edit" />
               </template>
@@ -49,11 +49,11 @@
           </div>
           <div class="q-my-sm q-gutter-md" style="max-width: 50%">
             <div class="q-gutter-md">Описание:</div>
-            <q-input v-model="submitExam.description" filled dark type="textarea" />
+            <q-input v-model="submitExam.description" :rules="[val => !!val ]" filled dark type="textarea" />
           </div>
           <div class="row q-my-sm q-gutter-md">
           <div style="max-width: 300px;">
-    <q-input filled dark v-model="submitExam.startDate" label="Започва на...">
+    <q-input filled dark v-model="submitExam.startDate" :rules="[val => !!val ]" label="Започва на...">
       <template v-slot:prepend>
         <q-icon name="event" class="cursor-pointer">
           <q-popup-proxy transition-show="scale" dark transition-hide="scale">
@@ -72,7 +72,7 @@
     </q-input>
   </div>
   <div style="max-width: 300px">
-    <q-input filled dark v-model="submitExam.endDate" label="Завършва на...">
+    <q-input filled dark v-model="submitExam.endDate" :rules="[val => !!val ]" label="Завършва на...">
       <template v-slot:prepend>
         <q-icon name="event" class="cursor-pointer">
           <q-popup-proxy transition-show="scale" dark transition-hide="scale">
@@ -116,7 +116,7 @@
   </div>
         </q-card-section>
         <div>
-          <q-btn :loading="loading1" class="q-ma-md q-pa-xs" dark type="submit" color="dark" @click="simulateProgressSave(1)" :disable="true" label="Запази" icon="save" />
+          <q-btn :loading="loading1" class="q-ma-md q-pa-xs" dark type="submit" color="dark" @click="simulateProgressSave(1)" :disable="clickable" label="Запази" icon="save" />
           <q-btn :loading="loading2" class="q-ma-md q-pa-xs" dark type="reset" color="dark" @click="simulateProgressEsc(2)" label="Откажи" icon="not_interested" />
         </div>
       </q-form>
@@ -124,6 +124,10 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
+var lama = 'laama'
+
 export default {
   data () {
     return {
@@ -156,7 +160,17 @@ export default {
     }
   },
   props: ['maximized'],
+  computed: {
+    clickable () {
+      if (lama !== '') {
+        return false
+      } else {
+        return true
+      }
+    }
+  },
   methods: {
+    ...mapActions('exams', ['addExam']),
     simulateProgressSave (number) {
       // we set loading state
       this[`loading${number}`] = true
@@ -164,7 +178,7 @@ export default {
       setTimeout(() => {
         // we're done, we reset loading state
         this[`loading${number}`] = false
-      }, 3000)
+      }, 1500)
     },
     simulateProgressEsc (number) {
       // we set loading state
@@ -174,6 +188,9 @@ export default {
         // we're done, we reset loading state
         this[`loading${number}`] = false
       }, 1500)
+    },
+    submitForm () {
+      this.addExam(this.submitExam)
     }
   }
 }
@@ -181,4 +198,7 @@ export default {
 
 <style scoped>
   .my-bcg {background-color: #26a69a;}
+  .q-field--with-bottom {
+    padding-bottom: 0;
+}
 </style>

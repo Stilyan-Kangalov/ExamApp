@@ -1,6 +1,7 @@
 /* eslint-disable */
 
 import Vue from 'vue'
+import { uid } from 'quasar'
 
 const state = {
   exams: {
@@ -70,12 +71,23 @@ const state = {
 const mutations = {
   deleteExam(state, id) {
     Vue.delete(state.exams, id)
+  },
+  addExam(state, payload) {
+    Vue.set(state.exams, payload.id, payload.exam)
   }
 }
 
 const actions = {
   deleteExam({ commit }, id) {
     commit('deleteExam', id)
+  },
+  addExam({ commit }, exam) {
+    let examID = uid()
+    let payload = {
+      id: examID,
+      exam: exam
+    }
+    commit('addExam', payload)
   }
 }
 
