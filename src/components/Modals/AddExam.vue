@@ -18,6 +18,7 @@
           <div class="text-h6" style="color: #4effee">Добави нов изпит</div>
         </q-card-section>
 
+        <q-form>
         <q-card-section class="q-pt-none">
           <q-input outlined v-model="submitExam.name" label="Име на предмета" style="width: 70%" dark color="white">
             <template v-slot:append>
@@ -40,7 +41,7 @@
             </q-input>
           </div>
           <div class="row q-my-sm q-gutter-md">
-            <q-input outlined v-model="submitExam.theme" label="Тема на изпита" style="width: 69.5%" dark color="white">
+            <q-input outlined v-model="submitExam.theme" label="Тема на изпита" style="width: 69.5%" dark color="white" :rules="[val => !!val ]">
               <template v-slot:append>
                 <q-icon name="edit" />
               </template>
@@ -56,7 +57,7 @@
       <template v-slot:prepend>
         <q-icon name="event" class="cursor-pointer">
           <q-popup-proxy transition-show="scale" dark transition-hide="scale">
-            <q-date v-model="submitExam.startDate" dark mask="YYYY-MM-DD HH:mm" />
+            <q-date v-model="submitExam.startDate" dark mask="DD/MM/YYYY HH:mm" />
           </q-popup-proxy>
         </q-icon>
       </template>
@@ -64,7 +65,7 @@
       <template v-slot:append>
         <q-icon name="access_time" class="cursor-pointer">
           <q-popup-proxy transition-show="scale" dark transition-hide="scale">
-            <q-time v-model="submitExam.startDate" dark mask="YYYY-MM-DD HH:mm" format24h />
+            <q-time v-model="submitExam.startDate" dark mask="DD/MM/YYYY HH:mm" format24h />
           </q-popup-proxy>
         </q-icon>
       </template>
@@ -75,7 +76,7 @@
       <template v-slot:prepend>
         <q-icon name="event" class="cursor-pointer">
           <q-popup-proxy transition-show="scale" dark transition-hide="scale">
-            <q-date v-model="submitExam.endDate" dark mask="YYYY-MM-DD HH:mm" />
+            <q-date v-model="submitExam.endDate" dark mask="DD/MM/YYYY HH:mm" />
           </q-popup-proxy>
         </q-icon>
       </template>
@@ -83,7 +84,7 @@
       <template v-slot:append>
         <q-icon name="access_time" class="cursor-pointer">
           <q-popup-proxy transition-show="scale" dark transition-hide="scale">
-            <q-time v-model="submitExam.endDate" dark mask="YYYY-MM-DD HH:mm" format24h />
+            <q-time v-model="submitExam.endDate" dark mask="DD/MM/YYYY HH:mm" format24h />
           </q-popup-proxy>
         </q-icon>
       </template>
@@ -114,6 +115,11 @@
       <p v-else ><q-icon name="add_alert" class="bell"></q-icon>&nbsp;<strong class="my-warn-msg">Не е избрана финална дата !</strong></p>
   </div>
         </q-card-section>
+        <div>
+          <q-btn :loading="loading1" class="q-ma-md q-pa-xs" dark type="submit" color="dark" @click="simulateProgressSave(1)" :disable="true" label="Запази" icon="save" />
+          <q-btn :loading="loading2" class="q-ma-md q-pa-xs" dark type="reset" color="dark" @click="simulateProgressEsc(2)" label="Откажи" icon="not_interested" />
+        </div>
+      </q-form>
       </q-card>
 </template>
 
@@ -136,6 +142,8 @@ export default {
       dialog: false,
       maximizedToggle: true,
       model: null,
+      loading1: false,
+      loading2: false,
       optionsProfession: [
         'Инструктор по фитнес', 'Треньор', 'Инструктор и Треньор'
       ],
@@ -147,7 +155,27 @@ export default {
       ]
     }
   },
-  props: ['maximized']
+  props: ['maximized'],
+  methods: {
+    simulateProgressSave (number) {
+      // we set loading state
+      this[`loading${number}`] = true
+      // simulate a delay
+      setTimeout(() => {
+        // we're done, we reset loading state
+        this[`loading${number}`] = false
+      }, 3000)
+    },
+    simulateProgressEsc (number) {
+      // we set loading state
+      this[`loading${number}`] = true
+      // simulate a delay
+      setTimeout(() => {
+        // we're done, we reset loading state
+        this[`loading${number}`] = false
+      }, 1500)
+    }
+  }
 }
 </script>
 
