@@ -1,13 +1,13 @@
 <template>
 <q-item clickable v-ripple>
     <q-item-section avatar top>
-        <q-avatar v-if="getMyDate < exam.startDate" icon="create" color="orange" text-color="white" />
-        <q-avatar v-else-if="getMyDate >= exam.startDate && getMyDate <= exam.endDate" icon="play_arrow" color="red" text-color="white" />
-        <q-avatar v-else icon="check" color="grey" text-color="white" />
+        <q-avatar v-if="getMyDate < exam.startDate" icon="create" class="pending-exam" text-color="white" />
+        <q-avatar v-else-if="getMyDate >= exam.startDate && getMyDate <= exam.endDate" icon="play_arrow" class="active-now" text-color="white" />
+        <q-avatar v-else icon="check" class="passed-exam" text-color="white" />
         </q-item-section>
         <q-item-section>
-          <q-item-label lines="1">{{ exam.name }}</q-item-label>
-          <q-item-label caption>{{ exam.startDate }}</q-item-label>
+          <q-item-label lines="1" class="exam-label">{{ exam.name }}</q-item-label>
+          <q-item-label caption class="day-label">{{ exam.startDate }}</q-item-label>
         </q-item-section>
         <q-item-section side>
         <q-icon v-if="getMyDate < exam.startDate" name="date_range" color="orange" />

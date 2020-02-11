@@ -1,4 +1,6 @@
 // app global css in SCSS form
+@import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates&display=swap');
+
 .my-grey-bcg {
     background: url("~assets/concrete_seamless.png") repeat scroll 0 0;
 }
@@ -6,8 +8,53 @@
     margin: 0;
 }
 
+// buttons
+
+.active-now {
+    background: rgb(251,63,158);
+    background: radial-gradient(circle, rgba(251,63,158,1) 0%, rgba(182,8,44,1) 100%);
+}
+
+.passed-exam {
+    background: rgb(154,154,154);
+    background: radial-gradient(circle, rgba(154,154,154,1) 0%, rgba(89,86,86,1) 100%);
+}
+
+.pending-exam {
+    background: rgb(247,214,19);
+    background: radial-gradient(circle, rgba(247,214,19,1) 0%, rgba(240,143,16,1) 100%);
+}
+
 .my-warn-msg {
     color: #f9e6b4;
+}
+
+.menu-label {
+    line-height: 1.2em !important;
+    max-width: 100%;
+    font-weight: bold;
+}
+
+.header-label {
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-weight: bold !important;
+    color: #05959c;
+}
+
+.exam-label {
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: 
+    #0f827a;
+}
+
+.day-label {
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    color: 
+    #988f8f;
 }
 
 .bell {

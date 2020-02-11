@@ -35,7 +35,7 @@
             <q-icon name="history" />
           </q-item-section>
           <q-item-section>
-            <q-item-label class="text-cyan-11">Табло за изпити</q-item-label>
+            <q-item-label class="text-cyan-11 menu-label">Изпити</q-item-label>
           </q-item-section>
         </q-item>
         <q-item to="/info" exact clickable >
@@ -43,7 +43,7 @@
             <q-icon name="class" />
           </q-item-section>
           <q-item-section>
-            <q-item-label class="text-cyan-11">Информация</q-item-label>
+            <q-item-label class="text-cyan-11 menu-label">Информация</q-item-label>
           </q-item-section>
         </q-item>
         <q-item to="/schedule" exact clickable >
@@ -51,7 +51,7 @@
             <q-icon name="assignment" />
           </q-item-section>
           <q-item-section>
-            <q-item-label class="text-cyan-11">График</q-item-label>
+            <q-item-label class="text-cyan-11 menu-label">График</q-item-label>
           </q-item-section>
         </q-item>
         <q-item to="/files" exact clickable >
@@ -59,7 +59,7 @@
             <q-icon name="folder_shared" />
           </q-item-section>
           <q-item-section>
-            <q-item-label class="text-cyan-11">Файлове</q-item-label>
+            <q-item-label class="text-cyan-11 menu-label">Файлове</q-item-label>
           </q-item-section>
         </q-item>
         <q-item to="/admin" exact clickable >
@@ -67,7 +67,7 @@
             <q-icon name="settings" />
           </q-item-section>
           <q-item-section>
-            <q-item-label class="text-cyan-11">Настройки</q-item-label>
+            <q-item-label class="text-cyan-11 menu-label">Настройки</q-item-label>
           </q-item-section>
         </q-item>
       </q-list>
@@ -98,4 +98,8 @@ export default {
   background: rgb(0,96,100);
 background: linear-gradient(90deg, rgba(0,96,100,1) 0%, rgba(0,96,100,1) 13%, rgba(11,109,109,1) 23%, rgba(11,115,112,1) 35%, rgba(12,121,116,1) 48%, rgba(17,172,160,1) 75%, rgba(19,195,179,1) 87%, rgba(21,219,200,1) 100%);
 }
+.menu-label {
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+
 </style>

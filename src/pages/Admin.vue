@@ -1,7 +1,7 @@
 <template>
   <div class="q-pa-md q-gutter-md">
     <q-list bordered padding class="rounded-borders" style="max-width: 80%;background-color: white;">
-      <q-item-label header><q-btn @click="showAddExam = true" class="float-right" round color="teal-6" size="15px" icon="add" /><h1>Контролен панел</h1></q-item-label>
+      <q-item-label header><q-btn @click="showAddExam = true" class="float-right" round color="teal-6" size="15px" icon="add" /><h1 class="header-label">Контролен панел</h1></q-item-label>
       <q-item v-for="(exam, key) in exams" :key="key" clickable v-ripple>
     <q-item-section avatar top>
         <q-avatar v-if="getMyDate < exam.startDate" icon="create" color="orange" text-color="white" />
