@@ -1,7 +1,7 @@
 <template>
   <div class="q-pa-md q-gutter-md">
     <q-list bordered padding class="rounded-borders" style="max-width: 80%; background-color: white;">
-      <q-item-label header><h1 class="header-label">Изпити</h1></q-item-label>
+      <q-item-label header class="header-bcg"><h1 class="header-label">Изпити</h1></q-item-label>
 
       <exam v-for="(exam, key) in exams" :key="key" :id="key" :exam="exam" :date="getMyDate" ></exam>
     </q-list>

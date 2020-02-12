@@ -38,7 +38,18 @@
 .header-label {
     font-family: 'Montserrat Alternates', sans-serif;
     font-weight: bold !important;
-    color: #05959c;
+    color: #1b7377;
+}
+
+.header-bcg {
+    background: -moz-linear-gradient(left,  rgba(21,215,197,1) 0%, rgba(125,185,232,0) 50%);
+    background: -webkit-linear-gradient(left,  rgba(21,215,197,1) 0%,rgba(125,185,232,0) 50%);
+    background: linear-gradient(to right,  rgba(21,215,197,1) 0%,rgba(125,185,232,0) 50%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#15d7c5', endColorstr='#007db9e8',GradientType=1 );
+}
+
+.exam-row {
+    border-bottom: 1px solid #e8e8e8;
 }
 
 .exam-label {
