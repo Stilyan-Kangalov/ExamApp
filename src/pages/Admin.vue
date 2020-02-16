@@ -13,7 +13,7 @@
             <q-item-label caption>{{ exam.startDate }}</q-item-label>
             </q-item-section>
             <q-item-section side>
-              <q-btn flat round color="orange" icon="lock_open" />
+              <q-btn @click.stop="showEditExam = true" flat round color="orange" icon="lock_open" />
             </q-item-section>
             <q-item-section side>
               <q-btn @click.stop="askToRemove(key)" flat round color="red-10" icon="highlight_off" />
@@ -21,6 +21,9 @@
         </q-item>
         <q-dialog v-model="showAddExam" persistent :maximized="maximizedToggle" transition-show="slide-up" transition-hide="slide-down">
           <add-exam />
+        </q-dialog>
+        <q-dialog v-model="showEditExam" persistent :maximized="maximizedToggle" transition-show="slide-up" transition-hide="slide-down">
+          <edit-exam  :exam="exam" :id="id" />
         </q-dialog>
     </q-list>
   </div>
@@ -35,6 +38,7 @@ export default {
     return {
       visible: true,
       showAddExam: false,
+      showEditExam: false,
       dialog: false,
       maximizedToggle: true
     }
@@ -48,7 +52,8 @@ export default {
     }
   },
   components: {
-    'add-exam': require('components/Modals/AddExam.vue').default
+    'add-exam': require('components/Modals/AddExam.vue').default,
+    'edit-exam': require('components/Modals/EditExam.vue').default
   },
   props: ['exam', 'id'],
   methods: {

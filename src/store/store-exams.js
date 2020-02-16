@@ -14,8 +14,8 @@ const state = {
       theme: 'Тема на изпита.',
       description: 'Описание на изпита.',
       teacher: 'Юлиан Карабиберов',
-      startDate: '11/02/2020 21:00',
-      endDate: '12/02/2020 05:00',
+      startDate: '12/02/2020 16:00',
+      endDate: '15/02/2020 05:00',
     },
     'ID2': {
       name: 'Педагогика',
@@ -26,8 +26,8 @@ const state = {
       theme: 'Тема на изпита.',
       description: 'Няма допълнителна информация.',
       teacher: 'Юлиан Карабиберов',
-      startDate: '09/02/2020 08:00',
-      endDate: '09/02/2020 09:00'
+      startDate: '20/02/2020 08:00',
+      endDate: '20/02/2020 09:00'
     },
     'ID3': {
       name: 'Спортна аеробика',
@@ -38,8 +38,8 @@ const state = {
       theme: 'Тема на изпита.',
       description: 'Описание на изпита.',
       teacher: 'Юлиан Карабиберов',
-      startDate: '13/02/2020 08:00',
-      endDate: '13/02/2020 09:00'
+      startDate: '16/02/2020 08:00',
+      endDate: '16/02/2020 23:30'
     },
     'ID4': {
       name: 'Спортна психология',
@@ -50,8 +50,8 @@ const state = {
       theme: 'Тема на изпита',
       description: 'Описание на изпита.',
       teacher: 'Юлиан Карабиберов',
-      startDate: '12/02/2020 08:00',
-      endDate: '12/02/2020 09:00'
+      startDate: '14/02/2020 08:00',
+      endDate: '14/02/2020 09:00'
     },
     'ID5': {
       name: 'Спортен масаж',
@@ -69,6 +69,9 @@ const state = {
 }
 
 const mutations = {
+  updateExam(state, payload) {
+    Object.assign(state.exams[payload.id], payload.updates)
+  },
   deleteExam(state, id) {
     Vue.delete(state.exams, id)
   },
@@ -78,6 +81,9 @@ const mutations = {
 }
 
 const actions = {
+  updateExam({ commit }, payload) {
+    commit('updateExam', payload)
+  },
   deleteExam({ commit }, id) {
     commit('deleteExam', id)
   },

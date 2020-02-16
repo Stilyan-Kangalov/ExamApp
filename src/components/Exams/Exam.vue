@@ -1,5 +1,5 @@
 <template>
-<q-item clickable v-ripple class="exam-row">
+<q-item clickable v-ripple class="exam-row" @click="basic = true">
     <q-item-section avatar top>
         <q-avatar v-if="getMyDate < exam.startDate" icon="create" class="pending-exam" text-color="white" />
         <q-avatar v-else-if="getMyDate >= exam.startDate && getMyDate <= exam.endDate" icon="play_arrow" class="active-now" text-color="white" />
@@ -18,8 +18,24 @@
         <q-icon v-if="getMyDate < exam.startDate" name="info" color="amber" />
         <q-icon v-else-if="getMyDate >= exam.startDate && getMyDate <= exam.endDate" name="info" style="color: #ef358a" />
         <q-icon v-else name="info" color="green" />
-        </q-item-section>
-        </q-item>
+    </q-item-section>
+    <q-dialog v-model="basic" transition-show="rotate" transition-hide="rotate">
+      <q-card class="exam-dialog">
+        <q-card-section>
+          <div class="text-h6">Информация</div>
+        </q-card-section>
+        <q-card-section class="q-pt-none">
+          <p>Изпит по: {{ exam.name }}</p>
+          <p>Професия: {{ exam.profession }}</p>
+          <p>Курс: {{ exam.level }}</p>
+        </q-card-section>
+        <q-card-actions align="right">
+          <q-btn flat label="Затвори" color="red" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
+      </q-item>
+
 </template>
 
 <script>
@@ -29,6 +45,11 @@ import { date } from 'quasar'
 
 export default {
   props: ['exam', 'id', 'date'],
+  data() {
+    return {
+      basic: false
+    }
+  },
   computed: {
     getMyDate () {
       let timeStamp = Date.now()
