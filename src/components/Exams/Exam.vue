@@ -12,12 +12,12 @@
         <q-item-section side>
         <q-icon v-if="getMyDate < exam.startDate" name="date_range" color="orange" />
         <q-icon v-else-if="getMyDate >= exam.startDate && getMyDate <= exam.endDate" name="event" style="color: #d01d57" />
-        <q-icon v-else name="calendar_today" color="grey" />
+        <q-icon v-else name="calendar_today" style="color: #1a798e" />
         </q-item-section>
         <q-item-section side>
         <q-icon v-if="getMyDate < exam.startDate" name="info" color="amber" />
         <q-icon v-else-if="getMyDate >= exam.startDate && getMyDate <= exam.endDate" name="info" style="color: #ef358a" />
-        <q-icon v-else name="info" color="green" />
+        <q-icon v-else name="info" style="color: #949494" />
     </q-item-section>
     <q-dialog v-model="basic" transition-show="rotate" transition-hide="rotate">
       <q-card class="exam-dialog">
