@@ -22,12 +22,19 @@
     <q-dialog v-model="basic" transition-show="rotate" transition-hide="rotate">
       <q-card class="exam-dialog">
         <q-card-section>
-          <div class="text-h6">Информация</div>
+          <div class="text-h6 dialog-head">Информация</div>
         </q-card-section>
-        <q-card-section class="q-pt-none">
+        <q-card-section class="q-pt-none dialog-label">
           <p>Изпит по: {{ exam.name }}</p>
           <p>Професия: {{ exam.profession }}</p>
           <p>Курс: {{ exam.level }}</p>
+          <p>Форма на изпита: {{ exam.type }}</p>
+          <p v-if="getMyDate < exam.startDate" class="topic-red">Номер на билета: Видим само по време на изпита!</p>
+          <p v-else-if="getMyDate >= exam.startDate && getMyDate <= exam.endDate" class="topic-red">Номер на билета: {{ exam.number }}</p>
+          <p v-else class="topic-red">Номер на билета: Видим само по време на изпита!</p>
+          <p v-if="getMyDate < exam.startDate" class="topic-red">Тема: Видима само по време на изпита!</p>
+          <p v-else-if="getMyDate >= exam.startDate && getMyDate <= exam.endDate" class="topic-red">Тема: {{ exam.theme }}</p>
+          <p v-else class="topic-red">Тема: Видима само по време на изпита!</p>
         </q-card-section>
         <q-card-actions align="right">
           <q-btn flat label="Затвори" color="red" v-close-popup />

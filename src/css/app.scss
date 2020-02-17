@@ -73,6 +73,25 @@
     font-weight: 800;
 }
 
+.dialog-head {
+    font-size: 1.25rem;
+    font-weight: 800;
+    line-height: 2rem;
+    letter-spacing: 0.0125em;
+    padding: 15px;
+    color: white;
+    background: radial-gradient(#0f807e, #074443);
+    text-align: center;
+}
+
+.dialog-label p { 
+    color: #8826a9;
+}
+
+.dialog-label p.topic-red { 
+    color: red;
+}
+
 .bell {
     color: #ffd504 !important;
 }

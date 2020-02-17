@@ -22,9 +22,6 @@
         <q-dialog v-model="showAddExam" persistent :maximized="maximizedToggle" transition-show="slide-up" transition-hide="slide-down">
           <add-exam />
         </q-dialog>
-        <q-dialog v-model="showEditExam" persistent :maximized="maximizedToggle" transition-show="slide-up" transition-hide="slide-down">
-          <edit-exam  :exam="exam" :id="id" />
-        </q-dialog>
     </q-list>
   </div>
 </template>
@@ -52,8 +49,7 @@ export default {
     }
   },
   components: {
-    'add-exam': require('components/Modals/AddExam.vue').default,
-    'edit-exam': require('components/Modals/EditExam.vue').default
+    'add-exam': require('components/Modals/AddExam.vue').default
   },
   props: ['exam', 'id'],
   methods: {
